@@ -22,7 +22,7 @@ class ProjectTableSeeder extends Seeder
             $newProject->client = $faker->name();
             $newProject->start_date = $faker->date('Y-m-d');
             $newProject->end_date = $faker->date('Y-m-d');
-            $newProject->summary = $faker->paragraph(2);
+            $newProject->summary = $faker->sentence(5);
 
             $newProject->save();
         }
