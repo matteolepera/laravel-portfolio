@@ -14,4 +14,5 @@
     <p>
         {{ $project->summary }}
     </p>
+    <a class="btn btn-primary" href={{ route("projects.index") }}>Torna alla home</a>
 @endsection

@@ -11,6 +11,7 @@
                 <th scope="col">Data inizio</th>
                 <th scope="col">Data fine</th>
                 <th scope="col">Riassunto</th>
+                <th scope="col">Dettagli</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
                     <td>{{ $project->start_date }}</td>
                     <td>{{ $project->end_date }}</td>
                     <td>{{ $project->summary }}</td>
+                    <td><a href={{ route("projects.show", $project->id)}}>Dettagli progetto</a></td>
                 </tr>
             @endforeach
         </tbody>
