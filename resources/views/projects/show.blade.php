@@ -3,7 +3,8 @@
 
 @section("main-content")
     <h1>{{ $project->name }}</h1>
-    <h3>{{ $project->client }}</h3>
+    <h4>Cliente:</h4>
+    <p>{{ $project->client }}</p>
     <div>
         <p>
             Data di inizio: {{ $project->start_date }} - Data di fine: {{ $project->end_date }}
