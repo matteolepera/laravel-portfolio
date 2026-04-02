@@ -3,6 +3,7 @@
 
 @section("main-content")
     <h1>I miei progetti</h1>
+    <a class="btn btn-primary" href={{ route("projects.create") }}>Aggiungi un progetto</a>
     <table class="table my-4">
         <thead>
             <tr>
@@ -10,7 +11,7 @@
                 <th scope="col">Cliente</th>
                 <th scope="col">Data inizio</th>
                 <th scope="col">Data fine</th>
-                <th scope="col">Riassunto</th>
+                <th scope="col">Descrizione</th>
                 <th scope="col">Dettagli</th>
             </tr>
         </thead>
