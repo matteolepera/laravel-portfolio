@@ -24,12 +24,13 @@
         </div>
         <div class="mb-3 col-12">
             <label for="summary" class="form-label">Descrizione</label>
-            <textarea class="form-control" name="summary" id="summary">
-                    {{ $project->summary }}
-                </textarea>
+            <textarea class="form-control" name="summary" id="summary">{{ $project->summary }}
+                                </textarea>
         </div>
         <div class="text-center">
-            <input class="btn btn-success col-3 text-center" name="" type="submit" value="Salva">
+            <input class="btn btn-success col-3 text-center" type="submit" value="Salva">
+            <a class="btn btn-warning col-3 text-center" href={{ route("projects.show", $project) }}> Torna indietro</a>
         </div>
     </form>
+
 @endsection
