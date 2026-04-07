@@ -61,7 +61,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("projects.edit", compact("project"));
+        //prendo i tipi
+        $types = Type::all();
+        return view("projects.edit", compact("project", "types"));
     }
 
     /**
@@ -72,6 +74,7 @@ class ProjectController extends Controller
         $data = $request->all();
 
         $project->name = $data["name"];
+        $project->type_id = $data["type_id"];
         $project->client = $data["client"];
         $project->start_date = $data["start_date"];
         $project->end_date = $data["end_date"];

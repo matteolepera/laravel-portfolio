@@ -38,4 +38,7 @@
             <input class="btn btn-success col-3 text-center" name="" type="submit" value="Salva">
         </div>
     </form>
+    <div class="text-center mt-4">
+        <a class="btn btn-warning col-3 text-center" href={{ route("projects.index") }}> Torna indietro</a>
+    </div>
 @endsection
