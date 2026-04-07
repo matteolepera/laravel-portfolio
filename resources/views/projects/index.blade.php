@@ -8,6 +8,7 @@
         <thead>
             <tr>
                 <th scope="col">Nome</th>
+                <th scope="col">Tipo progetto</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Data inizio</th>
                 <th scope="col">Data fine</th>
@@ -19,6 +20,7 @@
             @foreach ($projects as $project)
                 <tr>
                     <td>{{ $project->name }}</td>
+                    <td>{{ $project->type->name }}</td>
                     <td>{{ $project->client }}</td>
                     <td>{{ $project->start_date }}</td>
                     <td>{{ $project->end_date }}</td>
