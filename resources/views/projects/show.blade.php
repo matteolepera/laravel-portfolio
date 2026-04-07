@@ -8,7 +8,7 @@
             Elimina
         </button>
     </div>
-    <h1>{{ $project->name }}</h1>
+    <h1>{{ $project->name }}<span class="badge rounded-pill text-bg-info">{{ $project->type->name }}</span></h1>
     <h4>Cliente:</h4>
     <p>{{ $project->client }}</p>
     <div>
