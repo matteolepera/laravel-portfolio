@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\returnArgument;
 
@@ -23,7 +24,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("projects.create");
+        //prendo i tipi
+        $types = Type::all();
+        return view("projects.create", compact("types"));
     }
 
     /**
