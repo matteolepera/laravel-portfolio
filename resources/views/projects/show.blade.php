@@ -16,35 +16,42 @@
             Data di inizio: {{ $project->start_date }} - Data di fine: {{ $project->end_date }}
         </p>
     </div>
+    <small>Stack Tecnologico:</p>
+        @forelse ($project->technologies as $technology)
+            <small>{{ $technology->name }}</small>
+        @empty
+            <small>non ancora inserito</small>
+        @endforelse
 
-    <h4>Descrizione:</h4>
-    <p>
-        {{ $project->summary }}
-    </p>
-    <a class="btn btn-primary" href={{ route("projects.index") }}>Torna indietro</a>
+
+        <h4>Descrizione:</h4>
+        <p>
+            {{ $project->summary }}
+        </p>
+        <a class="btn btn-primary" href={{ route("projects.index") }}>Torna indietro</a>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalDestroyProject" tabindex="-1" aria-labelledby="modalDestroyProjectLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalDestroyProjectLabel">Conferma eliminazione progetto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Sei sicuro di voler eliminare il progetto?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <form action={{ route("projects.destroy", $project) }} method="POST">
-                        @csrf
-                        @method("DELETE")
-                        <input class="btn btn-danger" type="submit" value="Conferma eliminazione">
-                    </form>
+        <!-- Modal -->
+        <div class="modal fade" id="modalDestroyProject" tabindex="-1" aria-labelledby="modalDestroyProjectLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalDestroyProjectLabel">Conferma eliminazione progetto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Sei sicuro di voler eliminare il progetto?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <form action={{ route("projects.destroy", $project) }} method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <input class="btn btn-danger" type="submit" value="Conferma eliminazione">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
