@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use function PHPUnit\Framework\returnArgument;
 
 class ProjectController extends Controller
@@ -49,7 +50,11 @@ class ProjectController extends Controller
 
         $newProject->save();
 
-        $newProject->technologies()->attach($data['technologies']);
+        if ($request->has("technologies")) {
+            $newProject->technologies()->attach($data['technologies']);
+        }
+
+
 
         return redirect()->route("projects.show", $newProject);
     }
@@ -69,7 +74,9 @@ class ProjectController extends Controller
     {
         //prendo i tipi
         $types = Type::all();
-        return view("projects.edit", compact("project", "types"));
+        //prendo le tecnologie
+        $technologies = Technology::all();
+        return view("projects.edit", compact("project", "types", "technologies"));
     }
 
     /**
@@ -88,6 +95,14 @@ class ProjectController extends Controller
 
         $project->update();
 
+
+        if ($request->has("technologies")) {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
+
+
         return redirect()->route("projects.show", $project);
     }
 
@@ -96,6 +111,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        //elimina tutti i record nella tabella pivot che hanno quel id 
+        $project->technologies()->detach();
+
         $project->delete();
 
         return redirect()->route("projects.index");
