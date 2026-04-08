@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\returnArgument;
@@ -26,7 +27,9 @@ class ProjectController extends Controller
     {
         //prendo i tipi
         $types = Type::all();
-        return view("projects.create", compact("types"));
+        //prendo le tecnologie
+        $technologies = Technology::all();
+        return view("projects.create", compact("types", "technologies"));
     }
 
     /**
@@ -45,6 +48,8 @@ class ProjectController extends Controller
         $newProject->summary = $data["summary"];
 
         $newProject->save();
+
+        $newProject->technologies()->attach($data['technologies']);
 
         return redirect()->route("projects.show", $newProject);
     }
